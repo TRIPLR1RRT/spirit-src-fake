@@ -1,0 +1,54 @@
+<header>
+    <div class="header-container">
+        <div class="logo">
+           <img 
+    src="https://cdn.discordapp.com/avatars/878181546505420840/a_f1cb378921c35cad94a094bc1a6a5aae.gif?size=80" 
+    alt="Logo" 
+    style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;"
+>
+
+            <h1>Spirit</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/commands">Commands</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </nav>
+        <% if (user) { %>
+            <div class="user-menu">
+                <button class="user-name">
+                    <img src="<%= user.avatarURL %>" alt="User Avatar" class="user-avatar">
+                    <span><%= user.username %></span>
+                    <span class="dropdown-arrow">▼</span>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        <% } else { %>
+            <a href="/auth/discord" class="discord-login">Login with Discord</a>
+        <% } %>
+    </div>
+</header>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const userNameButton = document.querySelector('.user-name');
+        const dropdown = document.querySelector('.dropdown-content');
+
+        if (userNameButton && dropdown) {
+            userNameButton.addEventListener('click', function (event) {
+                event.stopPropagation();
+                dropdown.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function (event) {
+                if (!userNameButton.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        }
+    });
+</script>

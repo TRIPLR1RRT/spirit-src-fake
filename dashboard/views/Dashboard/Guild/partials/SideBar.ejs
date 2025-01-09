@@ -1,0 +1,66 @@
+<aside class="sidebar">
+    <div class="sidebar-header">
+        <div class="project-icon">
+            <% if (guild?.iconURL) { %>
+                <img src="<%= guild.iconURL %>" alt="Guild Logo" class="guild-logo">
+            <% } else { %>
+                <span class="guild-initial"><%= guild?.name?.charAt(0).toUpperCase() %></span>
+            <% } %>
+        </div>
+        <div class="custom-dropdown">
+            <select id="server-select" class="dropdown-select" onchange="navigateToServer(this)">
+                <% if (guild) { %>
+                    <option value="/dashboard/<%= guild.id %>" selected><%= guild.name %></option>
+                <% } else { %>
+                    <option value="" disabled selected>Select a Server</option>
+                <% } %>
+                <% if (guilds && guilds.length > 0) { %>
+                    <% guilds.forEach(function(guildOption) { %>
+                        <option value="/dashboard/<%= guildOption.id %>">
+                            <%= guildOption.name %>
+                        </option>
+                    <% }); %>
+                <% } else { %>
+                    <option value="" disabled>No Servers Available</option>
+                <% } %>
+            </select>
+        </div>
+    </div>
+
+    <nav class="sidebar-nav">
+        <div class="sidebar-section">
+            <p class="section-title">Getting Started</p>
+            <ul>
+                <li class="nav-item active">
+                    <a href="/dashboard/<%= guild?.id %>">
+                        <i class="icon-home"></i> Home
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="sidebar-footer">
+        <a href="/settings">
+            <i class="icon-settings"></i>
+        </a>
+        <div class="user-info">
+            <% if (user && user.avatarURL) { %>
+                <img src="<%= user.avatarURL %>" alt="User Avatar" class="avatar">
+            <% } else { %>
+                <img src="/default-avatar.png" alt="Default Avatar" class="avatar">
+            <% } %>
+            <span class="username"><%= user?.username || 'Guest' %></span>
+        </div>
+    </div>
+</aside>
+
+<script>
+    function navigateToServer(selectElement) {
+        const selectedValue = selectElement.value;
+
+        if (selectedValue) {
+            window.location.href = selectedValue;
+        }
+    }
+</script>

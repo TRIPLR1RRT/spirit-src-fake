@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - <%= guild.name %></title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <%- include('partials/SideBar', { user, guild }); %>
+
+        <div class="main-content">
+            <h1>Welcome back, <%= user.username %>!</h1>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon members-icon" aria-label="Members"></div>
+                        <div class="stat-text-container">
+                            <div class="stat-text">Members</div>
+                            <div class="stat-number"><%= guild.memberCount %></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon roles-icon" aria-label="Roles"></div>
+                        <div class="stat-text-container">
+                            <div class="stat-text">Roles</div>
+                            <div class="stat-number"><%= guild.roles.length %></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon stickers-icon" aria-label="Stickers"></div>
+                        <div class="stat-text-container">
+                            <div class="stat-text">Stickers</div>
+                            <div class="stat-number"><%= guild.stickers.length %></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon emojis-icon" aria-label="Emojis"></div>
+                        <div class="stat-text-container">
+                            <div class="stat-text">Emojis</div>
+                            <div class="stat-number"><%= guild.emojis.length %></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
