@@ -8,7 +8,7 @@ const client = require('../structures/client');
 const CLIENT_ID = '878181546505420840';
 const CLIENT_SECRET = 'kwlKCtTrg88CpWXe3_WFJRegxU6ldETk';
 const REDIRECT_URI = 'https://141.136.42.91:4005:6373/callback';
-const BOT_TOKEN = 'ODc4MTgxNTQ2NTA1NDIwODQw.GJn8c8.YIX9tK60tWk-gSlwWLs9Jqng_3FikWjEuL1ZhI';
+const BOT_TOKEN = 'ODc4MTgxNTQ2NTA1NDIwODJqng_3FikWjEuL1ZhI';
 
 function startDashboard() {
     const app = express();
